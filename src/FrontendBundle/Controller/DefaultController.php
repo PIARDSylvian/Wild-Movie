@@ -4,7 +4,9 @@ namespace FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FrontendBundle\Entity\Film;
+use FrontendBundle\Entity\Comments;
 use Symfony\Component\HttpFoundation\Request;
+use DateTime;
 
 class DefaultController extends Controller
 {
@@ -63,10 +65,33 @@ class DefaultController extends Controller
 
         $thisMovie = $em->getRepository('FrontendBundle:Film')->findOneById($id);
 
+        $comments = $em->getRepository('FrontendBundle:Comments')->findByIdFilm($id);
+
         return $this->render('FrontendBundle:Default:show.html.twig',
         	array(
         		'movie' => $thisMovie,
+                'comments' =>$comments,
         ));
+
+    }
+
+    public function commentsAction(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $content = $request->request->get('comment');
+
+        $com = new Comments;
+        $com->setIdFilm($id);
+        $com->setIdUser($user->getId());
+        $com->setComment($content);
+        $com->setDate( new DateTime());
+
+        $em->persist($com);
+        $em->flush();
+
+        return $this->redirectToRoute('film_show', array('id'=>$id));
 
     }
 }

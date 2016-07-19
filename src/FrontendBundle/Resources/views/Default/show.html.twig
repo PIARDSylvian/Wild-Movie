@@ -14,11 +14,23 @@
 		</div>
 	</div>
 	<div class="col-md-10 col-md-offset-1">
-		<div class="col-md-12">
+		<div class="col-md-4">
 			<h2>Commentaires : </h2>
 			<hr>
-
-			{# CODE HERE #}
+			{% for comment in comments %}
+			<div class="col-md-12 comment">
+				<p>Le {{comment.date |date("d/m/Y") }}</p>
+				<p>{{comment.comment}}</p>
+			</div>
+			{% endfor %}
+			<hr>
+			<div class="col-md-12">
+				<form action="{{ path('article_comments_add', {'id': movie.id}) }}" method="post">
+					<textarea type="textarea" rows="3" cols="35" name="comment" placeholder="Votre commentaire...."></textarea>
+					<br />
+					<input type="submit" value="valider"/>
+				</form>
+			</div>
 		</div>
 	</div>
 
