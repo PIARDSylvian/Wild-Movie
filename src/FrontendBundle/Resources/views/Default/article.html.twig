@@ -1,10 +1,17 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-
-	<h2> Télécharge cette maquette et intégre ta page ici-même.
-	Le contenu est bien entendu fictif. Ne rentre pas un article en BDD, nous te demandons juste d'intégrer la page. (Le header et le footer sont déjà présent !!!)</h2>
-
-	<img src="{{ asset('img/image.png') }}">
-
+	<section class="col-md-10">
+		<article>
+			<h2>Titre de l'article</h2>
+			<img src="{{ asset('img/image.png') }}">
+			<p>Nulla ornare tempor dolor, quis molestie ligula. Nam lacinia ex sed quam malesuada, vel euismod lacus mattis. Nam a mi non purus gravida scelerisque porttitor congue risus. Nam ac vehicula sapien, nec sollicitudin nulla. Vivamus dignissim dolor vel elit lacinia, eget ullamcorper risus venenatis. Ut elementum molestie dolor et interdum.</p>
+		<article>
+	</section>
+	<aside class="col-md-2">
+		<article>
+			<img src="{{ asset('img/image.png') }}">
+			<h3>Titre de l'article</h3>
+		</article>
+	</aside>
 {% endblock %}

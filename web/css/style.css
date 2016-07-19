@@ -59,3 +59,22 @@
 	background-color:#04B45F;
 	padding:20px;
 }
+
+/*------------------------ Page article ------------------------*/
+
+section article
+{
+	padding:0 50px;
+	width: 100%;
+}
+section article img{
+	margin:20px;
+	width: 100%;
+	max-height: 400px;
+}
+
+.aside-article img, .aside-article p
+{
+	margin: 10px 0;
+	width: 100%;
+}
